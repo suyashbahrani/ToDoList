@@ -12,11 +12,36 @@ app.get("/", function(req, res) {
     //0-6 sun-mon
     //render for ejs (name of file)
     //ejs have variable: value
-    if (currentDay === 6 || currentDay === 0) {
-        day = "Weekend";
-    }
-    else {
-        day = "weekday";
+    // if (currentDay === 6 || currentDay === 0) {
+    //     day = "Weekend";
+    // }
+    // else {
+    //     day = "weekday";
+    // }
+    switch (currentDay) {
+        case 0:
+            day = "Sunday";
+            break;
+        case 1:
+            day = "Monday";
+            break;
+        case 2:
+            day = "Tuesday";
+            break;
+        case 3:
+            day = "Wednesday";
+            break;
+        case 4:
+            day = "Thursday";
+            break;
+        case 5:
+            day = "Friday";
+            break;
+        case 6:
+            day = "Saturday";
+            break;
+        default:
+            console.log("Error: Cureent Day is equal to: " + currentDay);
     }
     res.render("list", {kindOfDay: day})
 });
