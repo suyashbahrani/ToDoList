@@ -168,6 +168,18 @@ app.get("/:customListName", function(req, res){
     
 });
 
-app.listen(3001, function() {
-    console.log("Server running on 3001");
+
+// for local
+// app.listen(3001, function() {
+//     console.log("Server running on 3001");
+// });
+
+// for local and heroku
+let port = process.env.PORT;
+if(port == null || prot ==""){
+    port = 3000;
+}
+
+app.listen(port, function(){
+    console.log("Server has started on port 3000");
 });
