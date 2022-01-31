@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>To Do List</title>
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
-    <body>
-        <h1>It's a <%= kindOfDay %>!!<h1>
-            <ul>
-                <%for (var i=0; i<newListItems.length; i++) {%>
-                    <li><%= newListItems[i]%></li>
+<%- include("header") -%>
+        <div class="box" id = "heading">
+            <h1><%= listTitle %>!!<h1>
+        </div>
+        <div class ="box">
+            <!-- so as to get submitted we need checkbox to submit -->
+            <!-- give name to access for body parser -->
+            <!-- give value to identify (because name give "on") -->
+            <%newListItems.forEach(function(items){%>
+                <form action="/delete" method="POST">
+                    <div class="item">
+                            <input type="checkbox" onChange="this.form.submit()" value="<%=items._id%>" name="checkboxname">
+                                <p><%= items.name%></p>
+                    </div>
+                    <input type="hidden" name ="listName" value ="<%=listTitle%>"></input>
+                </form>
+            <%}); %>
+
+            <!-- <%for (let i=0; i<newListItems.length; i++) {%>
+            <div class="item">
+                <input type="checkbox">
+                    <p><%= newListItems[i].name%></p>
+                </div>
                <% } %>
-            </ul>
+             -->
+
             <form class = "" action ="/" method = "POST">
-                <input type="text" name = "newItem">
-                <button type = "submit" name = "button">Add</button>
+                <input type="text" name = "newItem" placeholder="New Item" autocomplete="off">
+                <button type = "submit" name = "list" value ="<%= listTitle %>">+</button>
             </form>
-    </body>
-</html>
+        </div>
+<%- include("footer") -%>
+    
