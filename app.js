@@ -176,7 +176,7 @@ app.get("/:customListName", function(req, res){
 
 // for local and heroku
 let port = process.env.PORT;
-if(port == null || prot ==""){
+if(port == null || port ==""){
     port = 3000;
 }
 
